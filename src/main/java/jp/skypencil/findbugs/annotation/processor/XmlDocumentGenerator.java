@@ -1,6 +1,7 @@
 package jp.skypencil.findbugs.annotation.processor;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import javax.annotation.processing.Messager;
 import javax.lang.model.element.AnnotationMirror;
@@ -27,10 +28,10 @@ import jp.skypencil.findbugs.annotation.Speed;
 
 @ParametersAreNonnullByDefault
 class XmlDocumentGenerator {
-    Document generate(Iterable<TypeElement> typeElements, Messager messager) throws ParserConfigurationException {
+    Document generate(Iterable<TypeElement> typeElements, @Nullable FindbugsPluginInformation pluginInformation, Messager messager) throws ParserConfigurationException {
         DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
         Document document = builder.newDocument();
-        Element root = createRoot(document);
+        Element root = createRoot(document, pluginInformation);
         for (TypeElement typeElement : typeElements) {
             Detector detector = typeElement.getAnnotation(Detector.class);
             createDetectorElement(document, root, typeElement, detector);
@@ -44,9 +45,14 @@ class XmlDocumentGenerator {
         return document;
     }
 
-    private Element createRoot(Document document) {
+    private Element createRoot(Document document, @Nullable FindbugsPluginInformation pluginInformation) {
         Element root = document.createElement("FindbugsPlugin");
         document.appendChild(root);
+        if (pluginInformation != null) {
+            root.setAttribute("website", pluginInformation.getWebsite());
+            root.setAttribute("provider", pluginInformation.getProvider());
+            root.setAttribute("pluginid", pluginInformation.getPluginId());
+        }
         return root;
     }
 

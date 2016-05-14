@@ -51,4 +51,14 @@ public class DetectorProcessorTest {
                 .processedWith(new DetectorProcessor()).failsToCompile()
                 .withErrorContaining("No @BugPattern found").in(source).onLine(12);
     }
+
+    @Test
+    public void testProcessWithPluginInfo() {
+        assert_().about(javaSource())
+        .that(JavaFileObjects
+                .forResource(Resources.getResource("jp/skypencil/test/package-info.java")))
+        .processedWith(new DetectorProcessor()).compilesWithoutError().and()
+        .generatesFileNamed(StandardLocation.CLASS_OUTPUT, "", "findbugs.xml")
+        .withStringContents(StandardCharsets.UTF_8, "<?xml version=\"1.0\" encoding=\"UTF-8\"?><FindbugsPlugin pluginid=\"jp.skypencil.test\" provider=\"Kengo TODA\" website=\"https://github.com/KengoTODA/findbugs-plugin-annotation\"/>");
+    }
 }

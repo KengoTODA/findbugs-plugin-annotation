@@ -14,7 +14,11 @@ But it's little troublesome to develop, because we need to make complex XML file
 # How to use
 
 Depend on this plugin, and annotate your custom detectors with `@Detector` annotation.
-Refer [SampleDetector.java](src/test/resources/SampleDetector.java) as example.
+Refer [SampleDetector.java](src/test/resources/SampleDetector.java) in test as example.
+
+It is also recommended to put one `@FindbugsPlugin` annotation to `package-info.java`,
+then your `findbugs.xml` can provide detailed information like plugin provider.
+Refer [package-info.java](src/test/resources/jp/skypencil/test/package-info.java) in test as example.
 
 To use this annotation processor by Maven, please add following XML snippet to your `pom.xml`:
 
