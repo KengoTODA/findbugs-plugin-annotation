@@ -41,12 +41,14 @@ class XmlDocumentGenerator {
     private Element createRoot(Document document,
             @Nullable FindbugsPluginInformation pluginInformation) {
         Element root = document.createElement("FindbugsPlugin");
-        document.appendChild(root);
+        root.setAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
+        root.setAttribute("xsi:noNamespaceSchemaLocation", "findbugsplugin.xsd");
         if (pluginInformation != null) {
             root.setAttribute("website", pluginInformation.getWebsite());
             root.setAttribute("provider", pluginInformation.getProvider());
             root.setAttribute("pluginid", pluginInformation.getPluginId());
         }
+        document.appendChild(root);
         return root;
     }
 

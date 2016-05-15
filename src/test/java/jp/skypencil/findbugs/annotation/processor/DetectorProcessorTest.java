@@ -29,7 +29,7 @@ public class DetectorProcessorTest {
                         .forResource(Resources.getResource("SampleDetector.java")))
                 .processedWith(new DetectorProcessor()).compilesWithoutError().and()
                 .generatesFileNamed(StandardLocation.CLASS_OUTPUT, "", "findbugs.xml")
-                .withStringContents(StandardCharsets.UTF_8, "<?xml version=\"1.0\" encoding=\"UTF-8\"?><FindbugsPlugin><Detector class=\"SampleDetector\" reports=\"SLF4J_LOGGER_SHOULD_BE_FINAL\"/><BugPattern abbrev=\"SLF4J\" category=\"CORRECTNESS\" type=\"SLF4J_LOGGER_SHOULD_BE_FINAL\"/></FindbugsPlugin>");
+                .withStringContents(StandardCharsets.UTF_8, "<?xml version=\"1.0\" encoding=\"UTF-8\"?><FindbugsPlugin xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"findbugsplugin.xsd\"><Detector class=\"SampleDetector\" reports=\"SLF4J_LOGGER_SHOULD_BE_FINAL\"/><BugPattern abbrev=\"SLF4J\" category=\"CORRECTNESS\" type=\"SLF4J_LOGGER_SHOULD_BE_FINAL\"/></FindbugsPlugin>");
     }
 
     @Test
@@ -39,7 +39,7 @@ public class DetectorProcessorTest {
                         .forResource(Resources.getResource("SampleDetector.java")))
                 .processedWith(new DetectorProcessor()).compilesWithoutError().and()
                 .generatesFileNamed(StandardLocation.CLASS_OUTPUT, "", "findbugs.xml")
-                .withStringContents(StandardCharsets.UTF_8, "<?xml version=\"1.0\" encoding=\"UTF-8\"?><FindbugsPlugin><Detector class=\"SampleDetector\" reports=\"SLF4J_LOGGER_SHOULD_BE_FINAL\"/><BugPattern abbrev=\"SLF4J\" category=\"CORRECTNESS\" type=\"SLF4J_LOGGER_SHOULD_BE_FINAL\"/></FindbugsPlugin>");
+                .withStringContents(StandardCharsets.UTF_8, "<?xml version=\"1.0\" encoding=\"UTF-8\"?><FindbugsPlugin xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"findbugsplugin.xsd\"><Detector class=\"SampleDetector\" reports=\"SLF4J_LOGGER_SHOULD_BE_FINAL\"/><BugPattern abbrev=\"SLF4J\" category=\"CORRECTNESS\" type=\"SLF4J_LOGGER_SHOULD_BE_FINAL\"/></FindbugsPlugin>");
     }
 
     @Test
@@ -59,6 +59,6 @@ public class DetectorProcessorTest {
                 .forResource(Resources.getResource("jp/skypencil/test/package-info.java")))
         .processedWith(new DetectorProcessor()).compilesWithoutError().and()
         .generatesFileNamed(StandardLocation.CLASS_OUTPUT, "", "findbugs.xml")
-        .withStringContents(StandardCharsets.UTF_8, "<?xml version=\"1.0\" encoding=\"UTF-8\"?><FindbugsPlugin pluginid=\"jp.skypencil.test\" provider=\"Kengo TODA\" website=\"https://github.com/KengoTODA/findbugs-plugin-annotation\"/>");
+        .withStringContents(StandardCharsets.UTF_8, "<?xml version=\"1.0\" encoding=\"UTF-8\"?><FindbugsPlugin xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" pluginid=\"jp.skypencil.test\" provider=\"Kengo TODA\" website=\"https://github.com/KengoTODA/findbugs-plugin-annotation\" xsi:noNamespaceSchemaLocation=\"findbugsplugin.xsd\"/>");
     }
 }
