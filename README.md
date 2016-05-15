@@ -1,5 +1,7 @@
 # Findbugs plugin annotation
 
+[![Build Status](https://travis-ci.org/KengoTODA/findbugs-plugin-annotation.svg?branch=master)](https://travis-ci.org/KengoTODA/findbugs-plugin-annotation)
+
 This is an Annotation Processor to generate XML files for Findbugs Plugin.
 Currently this Annotation Processor can generate `findbugs.xml`, and will support `messages.xml` in near future.
 
