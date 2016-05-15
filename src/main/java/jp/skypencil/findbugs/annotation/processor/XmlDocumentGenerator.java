@@ -79,7 +79,7 @@ class XmlDocumentGenerator {
         Element element = document.createElement("Detector");
         root.appendChild(element);
         String types = FluentIterable.of(detector.value())
-                .transform(new BugPattern.ToType()).join(Joiner.on(","));
+                .transform(new BugPatternToType()).join(Joiner.on(","));
         element.setAttribute("class", typeElement.getQualifiedName().toString());
         if (!types.isEmpty()) {
             element.setAttribute("reports", types);
